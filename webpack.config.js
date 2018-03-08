@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     entry: {
         app: './app/main.js'
@@ -24,8 +25,12 @@ module.exports = {
                 loader: 'vue-loader',
                 options: {
                     loaders: {
-                        scss: 'vue-style-loader!css-loader!sass-loader'
-                    }
+                        scss: ExtractTextPlugin.extract({
+                            use: 'css-loader!sass-loader',
+                            fallback: 'vue-style-loader'
+                        })
+                    },
+                    extractCSS: true
                 }
             },
             {
@@ -41,7 +46,8 @@ module.exports = {
             template: './index.html'
         }),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NamedModulesPlugin()
+        new webpack.NamedModulesPlugin(),
+        new ExtractTextPlugin("style.css")
     ],
     resolve: {
         extensions: ['.js', '.vue'],
