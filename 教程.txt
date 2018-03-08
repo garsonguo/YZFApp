@@ -1,0 +1,24 @@
+﻿
+开发环境构建与基本结构搭建
+1.git新建仓库并clone到本地
+2.npm init ->package.json
+3.构建app目录
+    css ->scss
+    js->vue
+4.新建 webpack.config.js
+    参考文档：https://doc.webpack-china.org/concepts/
+    基础构建:
+        entry:入口
+        module：模块  
+            html:html-loader->参考 https://doc.webpack-china.org/loaders/html-loader/
+            vue:vue-loader
+            scss:
+                style-loader 
+                css-loader 
+                sass-loader ->参考 https://doc.webpack-china.org/loaders/sass-loader/
+        plugins ：插件
+        output：输出
+    进阶构建：
+        resolve：解析
+        devtool： This option controls if and how source maps are generated
+        devServer:服务+热替换->https://doc.webpack-china.org/guides/development/#%E4%BD%BF%E7%94%A8-webpack-dev-server
