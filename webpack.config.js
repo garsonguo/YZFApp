@@ -26,7 +26,7 @@ module.exports = {
                 options: {
                     loaders: {
                         scss: ExtractTextPlugin.extract({
-                            use: 'css-loader!sass-loader',
+                            use: 'css-loader!px2rem-loader?remUnit=40&remPrecision=8!sass-loader',
                             fallback: 'vue-style-loader'
                         })
                     },
@@ -35,7 +35,7 @@ module.exports = {
             },
             {
                 test: /\.scss/,
-                loader: 'style-loader!css-loader!sass-loader'
+                loader: 'style-loader!css-loader!px2rem-loader?remUnit=40&remPrecision=8!sass-loader'
             }
         ]
     },

@@ -1,9 +1,8 @@
 <template>
     <div id="app">
         <router-view/>
-        <h1>主页</h1>
-        <div class="footer">
-            <div class="footer-nav">
+        <div :class="$style.footer">
+            <div :class="$style.footerNav">
                 <router-link to='Home'>应用</router-link>
                 <router-link to='Home'>财富</router-link>
                 <router-link to='Home'>发现</router-link>
@@ -19,7 +18,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" module>
 @import './assets/css/reset.scss';
 .footer{
     position: fixed;
@@ -29,7 +28,7 @@
     right: 0;
     height: 50px;
     line-height: 50px;
-    .footer-nav{
+    .footerNav{
         display: flex;
         flex-direction: row;
         justify-content: space-around;

@@ -1,6 +1,6 @@
 <template>
-    <div>
-        这里是主页
+    <div id="home">
+        这里是主页1
     </div>
 </template>
 
@@ -10,6 +10,6 @@
     }
 </script>
 
-<style scoped>
+<style lang='scss' module>
 
 </style>
