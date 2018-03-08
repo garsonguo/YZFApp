@@ -15,17 +15,31 @@ module.exports = {
     },
     output: {
         filename: '[name].min.js',
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, './dist'),
         publicPath: '/'
     },
     module: {
         rules: [{
-            test: /\.vue$/,
-            loader: 'vue-loader'
-        }]
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                options: {
+                    loaders: {
+                        scss: 'vue-style-loader!css-loader!sass-loader'
+                    }
+                }
+            },
+            {
+                test: /\.scss/,
+                loader: 'style-loader!css-loader!sass-loader'
+            }
+        ]
     },
     plugins: [
-        new HtmlWebpackPlugin({ template: './index.html' }),
+        new HtmlWebpackPlugin({
+            title: 'hah',
+            filename: 'index.html',
+            template: './index.html'
+        }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin()
     ],

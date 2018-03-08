@@ -11,7 +11,7 @@
         entry:入口
         module：模块  
             html:html-loader->参考 https://doc.webpack-china.org/loaders/html-loader/
-            vue:vue-loader
+            vue:vue-loader->参考 https://vue-loader.vuejs.org/zh-cn/
             scss:
                 style-loader 
                 css-loader 
