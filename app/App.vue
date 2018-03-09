@@ -4,9 +4,9 @@
         <div :class="$style.footer">
             <div :class="$style.footerNav">
                 <router-link to='Home'>应用</router-link>
-                <router-link to='Home'>财富</router-link>
-                <router-link to='Home'>发现</router-link>
-                <router-link to='Home'>账户</router-link>
+                <router-link to='Money'>财富</router-link>
+                <router-link to='Discover'>发现</router-link>
+                <router-link to='Account'>账户</router-link>
             </div>
         </div>
     </div>
