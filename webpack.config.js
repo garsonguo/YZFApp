@@ -3,8 +3,8 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = env => {
-    console.log(env);
     if (!env) {
         env = {};
     }
@@ -24,6 +24,9 @@ module.exports = env => {
                 'process.env': {
                     NODE_ENV: '"production"'
                 }
+            }),
+            new UglifyJsPlugin({
+                sourceMap: true
             })
         );
     }
