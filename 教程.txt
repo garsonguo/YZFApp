@@ -3,8 +3,10 @@
 1.git新建仓库并clone到本地
 2.npm init ->package.json
 3.构建app目录
-    css ->scss
-    js->vue
+    asset ->css（scss） img
+    components->vue es5
+    router->路由
+    app.vue main.js
 4.新建 webpack.config.js
     参考文档：https://doc.webpack-china.org/concepts/
     基础构建:
@@ -16,9 +18,20 @@
                 style-loader 
                 css-loader 
                 sass-loader ->参考 https://doc.webpack-china.org/loaders/sass-loader/
+                vue-loader->参考 https://vue-loader.vuejs.org/zh-cn/
         plugins ：插件
         output：输出
     进阶构建：
         resolve：解析
         devtool： This option controls if and how source maps are generated
         devServer:服务+热替换->https://doc.webpack-china.org/guides/development/#%E4%BD%BF%E7%94%A8-webpack-dev-server
+5.查找问题的网站：https://stackoverflow.com/
+6.查找你需要的插件：https://www.npmjs.com
+7.配置eslint
+    安装：npm install eslint --save-dev
+    配置文件：.eslintrc.js 后缀为.yaml .yml .json 
+             .eslintrc
+             package.json
+    配置文件只需要有一个就行，优先级从上到下依次往下
+    vue配置：eslint-plugin-vue中demo的配置文件copy到json中的相关位置即可
+    参考：https://github.com/vuejs/eslint-plugin-vue

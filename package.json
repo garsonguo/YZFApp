@@ -1,53 +1,94 @@
 {
-    "name": "yzfapp",
-    "version": "1.0.0",
-    "description": "从0开始构建基于webpack和vue.js的前端移动端APP",
-    "main": "webpack.config.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "webpack-dev-server --open",
-        "build": "webpack --env.production"
+  "name": "yzfapp",
+  "version": "1.0.0",
+  "description": "从0开始构建基于webpack和vue.js的前端移动端APP",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open",
+    "build": "webpack --env.production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/garsonguo/YZFApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "eslintConfig": {
+    "root": true,
+    "parserOptions": {
+      "ecmaVersion": 2017
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/garsonguo/YZFApp.git"
+    "extends": [
+      "mysticatea",
+      "mysticatea/modules",
+      "plugin:vue/recommended"
+    ],
+    "plugins": [
+      "node"
+    ],
+    "env": {
+      "browser": false
     },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/garsonguo/YZFApp/issues"
+    "globals": {
+      "applicationCache": false,
+      "atob": false,
+      "btoa": false,
+      "console": false,
+      "document": false,
+      "location": false,
+      "window": false
     },
-    "homepage": "https://github.com/garsonguo/YZFApp#readme",
-    "devDependencies": {
-        "@types/clean-webpack-plugin": "^0.1.1",
-        "@types/extract-text-webpack-plugin": "^3.0.1",
-        "@types/less": "0.0.32",
-        "@types/node-sass": "^3.10.32",
-        "@types/webpack": "^4.0.0",
-        "@types/webpack-dev-server": "^2.9.3",
-        "clean-webpack-plugin": "^0.1.19",
-        "css-loader": "^0.28.10",
-        "extract-text-webpack-plugin": "^3.0.2",
-        "file-loader": "^1.1.11",
-        "font-awesome": "^4.7.0",
-        "font-awesome-webpack": "0.0.5-beta.2",
-        "html-webpack-plugin": "^3.0.6",
-        "less": "^3.0.1",
-        "less-loader": "^4.0.6",
-        "node-sass": "^4.7.2",
-        "px2rem-loader": "^0.1.7",
-        "sass-loader": "^6.0.7",
-        "style-loader": "^0.20.2",
-        "uglifyjs-webpack-plugin": "^1.2.2",
-        "vue-loader": "^14.2.1",
-        "vue-style-loader": "^4.0.2",
-        "vue-template-compiler": "^2.5.13",
-        "webpack": "^3.10.0",
-        "webpack-dev-server": "^2.10.1"
-    },
-    "dependencies": {
-        "@types/vue": "^2.0.0",
-        "vue": "^2.5.13",
-        "vue-router": "^3.0.1"
+    "rules": {
+      "node/no-extraneous-import": "error",
+      "node/no-missing-import": "error",
+      "node/no-unpublished-import": "error",
+      "vue/html-indent": [
+        "error",
+        4
+      ],
+      "vue/max-attributes-per-line": "off",
+      "require-noopener": "error"
     }
+  },
+  "bugs": {
+    "url": "https://github.com/garsonguo/YZFApp/issues"
+  },
+  "homepage": "https://github.com/garsonguo/YZFApp#readme",
+  "devDependencies": {
+    "@types/clean-webpack-plugin": "^0.1.1",
+    "@types/extract-text-webpack-plugin": "^3.0.1",
+    "@types/less": "0.0.32",
+    "@types/node-sass": "^3.10.32",
+    "@types/webpack": "^4.0.0",
+    "@types/webpack-dev-server": "^2.9.3",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^0.28.10",
+    "eslint": "^4.19.0",
+    "eslint-config-mysticatea": "^13.0.2",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-vue": "^4.3.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.11",
+    "font-awesome": "^4.7.0",
+    "font-awesome-webpack": "0.0.5-beta.2",
+    "html-webpack-plugin": "^3.0.6",
+    "less": "^3.0.1",
+    "less-loader": "^4.0.6",
+    "node-sass": "^4.7.2",
+    "px2rem-loader": "^0.1.7",
+    "sass-loader": "^6.0.7",
+    "style-loader": "^0.20.2",
+    "uglifyjs-webpack-plugin": "^1.2.2",
+    "vue-loader": "^14.2.1",
+    "vue-style-loader": "^4.0.2",
+    "vue-template-compiler": "^2.5.13",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.10.1"
+  },
+  "dependencies": {
+    "@types/vue": "^2.0.0",
+    "vue": "^2.5.13",
+    "vue-router": "^3.0.1"
+  }
 }
