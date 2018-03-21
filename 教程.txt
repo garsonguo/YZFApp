@@ -1,4 +1,4 @@
-﻿
+
 开发环境构建与基本结构搭建
 1.git新建仓库并clone到本地
 2.npm init ->package.json
@@ -10,21 +10,125 @@
 4.新建 webpack.config.js
     参考文档：https://doc.webpack-china.org/concepts/
     基础构建:
-        entry:入口
-        module：模块  
+        entry:入口文件的配置项，可以是单一入口，也可以是多入口
+        module：模块，例如解读css、图片如何转换，压缩等
             html:html-loader->参考 https://doc.webpack-china.org/loaders/html-loader/
             vue:vue-loader->参考 https://vue-loader.vuejs.org/zh-cn/
             scss:
-                style-loader 
-                css-loader 
-                sass-loader ->参考 https://doc.webpack-china.org/loaders/sass-loader/
-                vue-loader->参考 https://vue-loader.vuejs.org/zh-cn/
-        plugins ：插件
-        output：输出
+                对css处理：style-loader/css-loader
+                对sass处理：sass-loader ->参考 https://doc.webpack-china.org/loaders/sass-loader/
+                对vue处理：vue-loader->参考 https://vue-loader.vuejs.org/zh-cn/
+                处理css3属性前缀：PostCSS(CSS的处理平台，它可以帮助你的CSS实现更多的功能) autoprefixer(处理前缀的插件)
+                postcss.config.js
+                module.exports = {
+                    plugins: [
+                        require('autoprefixer')
+                    ]
+                }
+                loader
+                {
+                    test: /\.css$/,
+                    use: extractTextPlugin.extract({
+                        fallback: 'style-loader',
+                        use: [
+                            { loader: 'css-loader', options: { importLoaders: 1 } },
+                            'postcss-loader'
+                        ]
+                    })
+                    
+                }
+                ES6/ES7处理：babel-core babel-loader babel-preset-env
+                    .babelrc
+                    {
+                        "presets":["react","env"]
+                    }
+                    loader：
+                    {
+                        test:/\.(jsx|js)$/,
+                        use:{
+                            loader:'babel-loader',
+                        },
+                        exclude:/node_modules/
+                    }
+        plugins ：插件，用于生产模块和各项功能  
+            压缩：uglifyjs-webpack-plugin
+                const uglify = require('uglifyjs-webpack-plugin');
+                new uglify()
+            HTML文件发布：html-webpack-plugin，打包生成到目标文件夹，自动引入引入js/css文件
+                new htmlPlugin({
+                    //是对html文件进行压缩，removeAttrubuteQuotes是却掉属性的双引号。
+                    minify:{
+                        removeAttributeQuotes:true
+                    },
+                    //为了开发中js有缓存效果，所以加入hash，这样可以有效避免缓存JS。
+                    hash:true,
+                    //是要打包的html模版路径和文件名称。
+                    template:'./src/index.html'
+                })
+            图片处理：url-loader（本身包含file-loader->解决引用路径的问题，如：css背景图片等）->引入图片编码，避免http多次请求
+                {
+                    test:/\.(png|jpg|gif)/ ,
+                    use:[{
+                        loader:'url-loader',
+                        options:{
+                            limit:5000,
+                            outputPath:'images/',
+                        }
+                    }]
+                }
+            css分离：extract-text-webpack-plugin，将页面中的css抽离到指定的css文件中
+                const extractTextPlugin = require("extract-text-webpack-plugin");
+                new extractTextPlugin("/css/index.css")
+            处理HTML中的图片：html-withimg-loader，解决在hmtl文件中引入<img>标签的问题
+                {
+                    test: /\.(htm|html)$/i,
+                    use:[ 'html-withimg-loader'] 
+                }
+            消除未使用的CSS：purifycss-webpack purify-css
+                const glob = require('glob');
+                const PurifyCSSPlugin = require("purifycss-webpack");
+                new PurifyCSSPlugin({
+                    // Give paths to parse for rules. These should be absolute!
+                    paths: glob.sync(path.join(__dirname, 'src/*.html')),
+                })
+            打包第三方库：ProvidePlugin webpack自带插件  
+                ProvidePlugin全局引入jquery等第三方的包,引用后只有在类库使用时，才按需进行打包，所以建议在工作使用插件的方式进行引入。
+                plugins:[
+                    new webpack.ProvidePlugin({
+                        $:"jquery"
+                    })
+                ]
+                import引入:引用后不管你在代码中使用不适用该类库，都会把该类库打包起来，这样有时就会让代码产生冗余。
+                代码：import $ from 'jquery'
+            优化配置：optimize.CommonsChunkPlugin 抽离多个第三方库
+                入口：
+                entry:{
+                    entry:'./src/entry.js',
+                    jquery:'jquery',
+                    vue:'vue'
+                },
+                插件：
+                new webpack.optimize.CommonsChunkPlugin({
+                    //name对应入口文件中的名字，我们起的是jQuery
+                    name:['jquery','vue'],
+                    //把文件打包到哪里，是一个路径
+                    filename:"assets/js/[name].js",
+                    //最小打包的文件模块数，这里直接写2就好
+                    minChunks:2
+                }) 
+            静态资源集中输出：copy-webpack-plugin保留静态资源，直接打包到指定文件夹
+                new copyWebpackPlugin([{
+                    from:__dirname+'/src/public',
+                    to:'./public'
+                }])
+            热更新（修改内容局部刷新）：new webpack.HotModuleReplacementPlugin()
+        output：出口文件的配置项
     进阶构建：
         resolve：解析
-        devtool： This option controls if and how source maps are generated
-        devServer:服务+热替换->https://doc.webpack-china.org/guides/development/#%E4%BD%BF%E7%94%A8-webpack-dev-server
+        devtool： 打包后调试问题 eval-source-map   
+            devtool: 'eval-source-map'
+        devServer:（配置开发服务功能）服务+热替换->https://doc.webpack-china.org/guides/development/#%E4%BD%BF%E7%94%A8-webpack-dev-server
+        
 5.查找问题的网站：https://stackoverflow.com/
 6.查找你需要的插件：https://www.npmjs.com
 7.配置eslint
@@ -35,3 +139,4 @@
     配置文件只需要有一个就行，优先级从上到下依次往下
     vue配置：eslint-plugin-vue中demo的配置文件copy到json中的相关位置即可
     参考：https://github.com/vuejs/eslint-plugin-vue
+8.入门到高手：->参考：http://jspang.com/2017/09/16/webpack3-2/
