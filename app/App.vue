@@ -1,8 +1,8 @@
 <template>
     <div id="app">
         <router-view/>
-        <div :class="$style.footer">
-            <div :class="$style.footerNav">
+        <div class="footer">
+            <div class="footerNav">
                 <router-link to='Home'>
                     <i class="fa fa-home fa-2x"></i>
                     <p>应用</p>
@@ -30,7 +30,7 @@
     }
 </script>
 
-<style lang="scss" module>
+<style lang="scss">
 @import './assets/css/reset.scss';
 .footer{
     position: fixed;

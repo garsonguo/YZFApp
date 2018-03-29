@@ -1,40 +1,40 @@
 <template>
-    <div id="home" :class="$style.home">
-        <div :class="$style.hKJ">
-            <div :class="$style.hKJTop">
+    <div id="home" class="home">
+        <div class="hKJ">
+            <div class="hKJTop">
                 <a :href="item.href" v-for="item in kjTop" :key="item.id">
                     <i :class="item.img"></i>
                     <p>{{item.name}}</p>
                 </a>
             </div>
-            <div :class="$style.hKJBottom">
+            <div class="hKJBottom">
                 <a :href="item.href" v-for="item in kjBottom" :key="item.id">
                     <p>{{item.name}}</p>
                 </a>
             </div>
         </div>
-        <div :class="$style.hNav">
-            <div :class="$style.hNavRow">
-                <a :href="item.href" :class="$style.item" v-for="item in hNavRow1" :key="item.id">
+        <div class="hNav">
+            <div class="hNavRow">
+                <a :href="item.href" class="item" v-for="item in hNavRow1" :key="item.id">
                     <i :class="item.img"></i>
                     <p>{{item.name}}</p>
                 </a>
             </div>
-            <div :class="$style.hNavRow">
-                <a :href="item.href" :class="$style.item" v-for="item in hNavRow1" :key="item.id">
+            <div class="hNavRow">
+                <a :href="item.href" class="item" v-for="item in hNavRow1" :key="item.id">
                     <i :class="item.img"></i>
                     <p>{{item.name}}</p>
                 </a>
             </div>
-            <div :class="$style.hNavRow">
-                <a :href="item.href" :class="$style.item" v-for="item in hNavRow1" :key="item.id">
+            <div class="hNavRow">
+                <a :href="item.href" class="item" v-for="item in hNavRow1" :key="item.id">
                     <i :class="item.img"></i>
                     <p>{{item.name}}</p>
                 </a>
             </div>
         </div>
-        <div :class="$style.hADS">
-            <a :href="item.href" :class="$style.item" v-for="item in ads" :key="item.id">
+        <div class="hADS">
+            <a :href="item.href" class="item" v-for="item in ads" :key="item.id">
                 <img :src="item.src" :alt="item.name">
             </a>
         </div>
@@ -138,7 +138,7 @@
     }
 </script>
 
-<style lang='scss' module>
+<style lang='scss'>
 .home{
     background-color: #fff;
     a{

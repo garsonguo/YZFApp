@@ -52,13 +52,13 @@ module.exports = env => {
                     test: /\.vue$/,
                     loader: 'vue-loader',
                     options: {
-                        cssModules: {
-                            localIdentName: '[path][name]---[local]---[hash:base64:5]',
-                            camelCase: true
-                        },
+                        // cssModules: {
+                        //     localIdentName: '[path][name]---[local]---[hash:base64:5]',
+                        //     camelCase: true
+                        // },
                         loaders: {
                             scss: ExtractTextPlugin.extract({
-                                use: 'css-loader!px2rem-loader?remUnit=40&remPrecision=8!sass-loader',
+                                use: 'css-loader!px2rem-loader?remUnit=40&remPrecision=8!postcss-loader!sass-loader',
                                 fallback: 'vue-style-loader'
                             })
                         },
@@ -67,7 +67,7 @@ module.exports = env => {
                 },
                 {
                     test: /\.scss/,
-                    loader: 'style-loader!css-loader!px2rem-loader?remUnit=40&remPrecision=8!sass-loader'
+                    loader: 'style-loader!css-loader!px2rem-loader?remUnit=40&remPrecision=8!postcss-loader!sass-loader'
                 },
                 {
                     test: /\.(eot|svg|ttf|woff|woff2|png)\w*/,
