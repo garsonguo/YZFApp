@@ -38,6 +38,7 @@ module.exports = env => {
         );
     }
     return {
+        //devtool: 'source-map',
         entry: {
             app: './app/main.js'
         },
@@ -78,11 +79,11 @@ module.exports = env => {
                 },
                 {
                     test: /\.(eot|svg|ttf|woff|woff2|png)\w*/,
-                    loader: 'file-loader'
+                    loader: 'url-loader'
                 },
                 {
                     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                    loader: 'file-loader'
+                    loader: 'url-loader'
                 }
             ]
         },
