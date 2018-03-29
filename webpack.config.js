@@ -4,6 +4,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+//为了去除多余的css
+const glob = require('glob');
+const PurifyCSSPlugin = require("purifycss-webpack");
 module.exports = env => {
     if (!env) {
         env = {};
@@ -17,6 +20,10 @@ module.exports = env => {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
         new ExtractTextPlugin("style.css")
+        // new PurifyCSSPlugin({
+        //     // Give paths to parse for rules. These should be absolute!
+        //     paths: glob.sync(path.join(__dirname, '*.html')),
+        // })
     ];
     if (env.production) {
         plugins.push(
