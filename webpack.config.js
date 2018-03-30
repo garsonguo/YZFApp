@@ -78,6 +78,10 @@ module.exports = env => {
                     loader: 'style-loader!css-loader!px2rem-loader?remUnit=40&remPrecision=8!postcss-loader!sass-loader'
                 },
                 {
+                    test: /\.css/,
+                    loader: 'style-loader!css-loader'
+                },
+                {
                     test: /\.(eot|svg|ttf|woff|woff2|png)\w*/,
                     loader: 'url-loader'
                 },

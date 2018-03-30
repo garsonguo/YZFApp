@@ -4,14 +4,15 @@ import Home from '../components/home/Home';
 import Money from '../components/home/Money';
 import Discover from '../components/home/Discover';
 import Account from '../components/home/Account';
+import Login from '../components/login';
 
 Vue.use(Router);
 
 export default new Router({
     routes: [{
         path: '/',
-        name: 'Home',
-        component: Home
+        name: 'Login',
+        component: Login
     }, {
         path: '/Home',
         name: 'Home',
