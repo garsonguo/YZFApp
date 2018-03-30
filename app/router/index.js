@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '../components/home/Home';
-import Money from '../components/home/Money';
-import Discover from '../components/home/Discover';
-import Account from '../components/home/Account';
-import Login from '../components/login';
+import Money from '../components/money/Money';
+import Discover from '../components/discover/Discover';
+import Account from '../components/account/Account';
+import Login from '../components/Login';
 
 Vue.use(Router);
 

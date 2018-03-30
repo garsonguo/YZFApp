@@ -1,3 +1,19 @@
+<style lang="scss" scoped>
+.login{
+    position: absolute;
+    top: 50%;
+    margin-top: -300px;
+    left: 0;
+    right: 0;
+    padding: 0 20px;
+    .mint-button{
+        margin-top: 40px;
+    }
+    .mint-field{
+        margin-bottom: 40px;
+    }
+}
+</style>
 <template>
     <div class="login">
         <form ref="loginForm" :model="form" :rules="rules">
@@ -28,7 +44,5 @@
     }
 </script>
 
-<style scoped>
 
-</style>
 

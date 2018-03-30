@@ -1,2 +1,4 @@
 /node_modules/
 /app/*.js
+/app/router/*.js
+/app/store/*.js
