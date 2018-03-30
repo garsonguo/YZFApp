@@ -47,7 +47,8 @@
                 "error",
                 4
             ],
-            "vue/max-attributes-per-line": "off"
+            "vue/max-attributes-per-line": "off",
+            "require-noopener": "error"
         }
     },
     "bugs": {
@@ -64,6 +65,7 @@
         "@types/webpack": "^4.0.0",
         "@types/webpack-dev-server": "^2.9.3",
         "autoprefixer": "^8.2.0",
+        "babel-eslint": "^8.2.2",
         "clean-webpack-plugin": "^0.1.19",
         "css-loader": "^0.28.10",
         "eslint": "^4.19.0",
@@ -86,6 +88,7 @@
         "style-loader": "^0.20.2",
         "uglifyjs-webpack-plugin": "^1.2.2",
         "url-loader": "^1.0.1",
+        "vue-eslint-parser": "^2.0.3",
         "vue-loader": "^14.2.1",
         "vue-style-loader": "^4.0.2",
         "vue-template-compiler": "^2.5.13",
