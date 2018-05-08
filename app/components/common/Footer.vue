@@ -1,6 +1,6 @@
 <template>
     <div class="footer">
-        <div class="footerNav">
+        <div class="footer-nav">
             <router-link to='Home'>
                 <i class="fa fa-home fa-2x"></i>
                 <p>应用</p>
@@ -41,7 +41,7 @@
     text-align: center;
     border-top: 1px solid #ddd;
     padding: 20px 0;
-    .footerNav{
+    .footer-nav{
         display: flex;
         flex-direction: row;
         justify-content: space-around;
